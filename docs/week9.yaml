@@ -1,0 +1,334 @@
+openapi: 3.0.0
+info:
+  title: Week 9
+  contact: {}
+  version: "1.0"
+servers:
+  - url: http://localhost:3000
+    variables: {}
+paths:
+  /movies/get/page=10/limit=10:
+    get:
+      tags:
+        - movies
+      summary: Get movies with pagination and limit
+      operationId: GetMoviesPaginated
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /movies/post:
+    post:
+      tags:
+        - movies
+      summary: Add a new movie
+      operationId: AddMovie
+      parameters: []
+      requestBody:
+        description: "Movie object"
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/postidrequest"
+                - example:
+                    title: Agak Lain
+                    genres: Comedy|SliceofLive|Adventure
+                    year: "2024"
+            example:
+              title: Agak Lain
+              genres: Comedy|SliceofLive|Adventure
+              year: "2024"
+        required: true
+      responses:
+        "200":
+          description: "The created movie"
+          headers: {}
+      deprecated: false
+      security: []
+  /movies/put/1:
+    put:
+      tags:
+        - movies
+      summary: Update a movie
+      operationId: UpdateMovie
+      parameters: []
+      requestBody:
+        description: "Movie object"
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/httplocalhost3000moviesputidrequest"
+                - example:
+                    title: Agak Lain
+                    genres: Comedy|SliceofLive|Adventure
+                    year: "2024"
+            example:
+              title: Agak Lain
+              genres: Comedy|SliceofLive|Adventure
+              year: "2024"
+        required: true
+      responses:
+        "200":
+          description: "The updated movie"
+          headers: {}
+      deprecated: false
+      security: []
+  /movies/delete/1:
+    delete:
+      tags:
+        - movies
+      summary: Delete a movie
+      operationId: DeleteMovie
+      parameters: []
+      responses:
+        "204":
+          description: "The movie has been deleted"
+          headers: {}
+      deprecated: false
+      security: []
+    /users/register:
+    post:
+      tags:
+        - users
+      summary: Register a new user
+      operationId: registerUser
+      requestBody:
+        description: "User registration"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+            example:
+              email: Agusrongsok@yahoo.com
+              gender: Male
+              password: bakekok
+              role: akamsi
+        required: true
+      responses:
+        "200":
+          description: "New User Created"
+          headers: {}
+      deprecated: false
+      security: []
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: User login
+      operationId: userLogin
+      parameters:
+        - name: Authorization
+          in: header
+          description: ""
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFndXNyb25nc29rQHlhaG9vLmNvbSIsInJvbGUiOiJha2Ftc2kiLCJpYXQiOjE3MDk5MDk0MzQsImV4cCI6MTcwOTkxMzAzNH0.ljU6K7O9nKMp4BQUgH55JL_kYo4eViEnmAOZL5rCd44
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/loginrequest"
+                - example:
+                    email: jordikopling@yahoo.com
+                    password: kerensekali
+            example:
+              email: jordikopling@yahoo.com
+              password: kerensekali
+        required: true
+      responses:
+        "200":
+          description: "User retrieved successfully"
+          headers: {}
+      deprecated: false
+      security: []
+  /users/get/page=10/limit=10:
+    get:
+      tags:
+        - users
+      summary: Get users with pagination
+      operationId: getUsersWithPagination
+      parameters:
+        - name: Authorization
+          in: header
+          description: ""
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvcmRpa29wbGluZ0B5YWhvby5jb20iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNzA5OTA5NjQ2LCJleHAiOjE3MDk5MTMyNDZ9.qPt3FAAsA847bX2Tv5oi4hsH2GjN6mmx-HactLIZiwY
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /users/put/1:
+    put:
+      tags:
+        - users
+      summary: Update user by ID
+      operationId: updateUserById
+      parameters:
+        - name: Authorization
+          in: header
+          description: ""
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvcmRpa29wbGluZ0B5YWhvby5jb20iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNzA5OTA5NjQ2LCJleHAiOjE3MDk5MTMyNDZ9.qPt3FAAsA847bX2Tv5oi4hsH2GjN6mmx-HactLIZiwY
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/putidrequest"
+                - example:
+                    email: ujanglambada@yahoo.com
+                    gender: male
+                    password: manissekali
+                    role: Co-Founder
+            example:
+              email: ujanglambada@yahoo.com
+              gender: male
+              password: manissekali
+              role: Co-Founder
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /users/delete/1:
+    delete:
+      tags:
+        - users
+      summary: Delete user by ID
+      operationId: deleteUserById
+      parameters:
+        - name: Authorization
+          in: header
+          description: ""
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvcmRpa29wbGluZ0B5YWhvby5jb20iLCJyb2xlIjoiQ0VPIiwiaWF0IjoxNzA5OTA5NjQ2LCJleHAiOjE3MDk5MTMyNDZ9.qPt3FAAsA847bX2Tv5oi4hsH2GjN6mmx-HactLIZiwY
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    postidrequest:
+      title: postidrequest
+      required:
+        - title
+        - genres
+        - year
+      type: object
+      properties:
+        title:
+          type: string
+        genres:
+          type: string
+        year:
+          type: string
+      example:
+        title: Agak Lain
+        genres: Comedy|SliceofLive|Adventure
+        year: "2024"
+    httplocalhost3000moviesputidrequest:
+      title: httplocalhost3000moviesputidrequest
+      required:
+        - title
+        - genres
+        - year
+      type: object
+      properties:
+        title:
+          type: string
+        genres:
+          type: string
+        year:
+          type: string
+      example:
+        title: Agak Lain
+        genres: Comedy|SliceofLive|Adventure
+        year: "2024"
+    registerrequest:
+      title: registerrequest
+      required:
+        - email
+        - gender
+        - password
+        - role
+      type: object
+      properties:
+        email:
+          type: string
+        gender:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+      example:
+        email: Agusrongsok@yahoo.com
+        gender: Male
+        password: bakekok
+        role: akamsi
+    loginrequest:
+      title: loginrequest
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: jordikopling@yahoo.com
+        password: kerensekali
+    putidrequest:
+      title: putidrequest
+      required:
+        - email
+        - gender
+        - password
+        - role
+      type: object
+      properties:
+        email:
+          type: string
+        gender:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+      example:
+        email: ujanglambada@yahoo.com
+        gender: male
+        password: manissekali
+        role: Co-Founder
+tags:
+  - name: movies
+    description: Everything about movies
+  - name: users
+    description: Everything about users
