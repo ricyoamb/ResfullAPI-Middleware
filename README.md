@@ -22,7 +22,7 @@ $ npm run start
 
 ### API Documentation
 
-* Postman API Collection [clickhere](https://github.com/fathy17/dokumen-pembanding-2/blob/master/movies-database.sql)
+* Postman API Collection [clickhere](https://github.com/ricyoamb/ResfullAPI-Middleware/blob/main/docs/week9.yaml)
 Note: make sure to set token after login to access Library and Transaction endpoints
 
 ### References
